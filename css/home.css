@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   top: 0;
   left: 0;
@@ -111,8 +116,8 @@ nav a {
 
 /* 滑鼠移到 <a> 時變成深底淺色 */
 nav a:hover {
-  background-color: rgb(115, 115, 115);
-  color: #2f3640;
+  background-color: #B4B4B4;
+  color: white;
 }
 
 .flex-nav {
@@ -276,7 +281,7 @@ a {
 
 /* hot */
 .hot_box {
-  background: plum;
+
   width: 91.5%;
   position: relative;
   margin: 30px 30px;
@@ -305,6 +310,7 @@ a {
   translate: (0px 0px 0px);
   padding-right: 15px;
   margin-right: auto;
+  margin-left: 10px;
 
 }
 
@@ -348,12 +354,33 @@ a {
 }
 
 .hot_box .womanhot_title div {
-  width: 9%;
+  width: 10.6%;
   text-align: left;
   letter-spacing: 0;
   color: white;
   font-size: 80%;
   padding: 0.6% 0.9%;
+}
+
+/* woman-content */
+.womem-content {
+  width: 100%;
+}
+
+.list {
+  margin-top: 40px;
+  margin-left: 50px;
+  width: 20%;
+}
+
+.list ul {
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.list li {
+  list-style: none;
+  font-size: 18px;
 }
 
 
