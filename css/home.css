@@ -168,7 +168,8 @@ nav a:hover {
 }
 
 .picture_rotation {
-  background: pink;
+  /*background: pink;*/
+  margin-top: 150px;
   width: 100%;
   height: 400px;
   position: relative;
@@ -182,15 +183,15 @@ a {
 
 .banner {
   overflow: hidden;
-  width: 790px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
   margin: 100px auto;
   position: relative;
 }
 
 .banner ul {
-  width: 500%;
-  height: 340px;
+  width: 100%;
+  height: 100%;
   position: absolute;
 
 }
@@ -198,14 +199,14 @@ a {
 .banner ul li {
   float: left;
   list-style-type: none;
-  width: 790px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
 
 }
 
 .banner img {
-  width: 790px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
 }
 
 .banner .num {
@@ -365,12 +366,17 @@ a {
 /* woman-content */
 .womem-content {
   width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+
 }
 
 .list {
   margin-top: 40px;
   margin-left: 50px;
-  width: 20%;
+
 }
 
 .list ul {
@@ -383,7 +389,23 @@ a {
   font-size: 18px;
 }
 
+.all_list {
+  width: 20%;
+  background: white;
+  float: left;
+  margin-top: 30px;
 
+}
+
+.woman_product {
+  width: 80%;
+  /* background: paleturquoise;*/
+  background: powderblue;
+  float: right;
+
+  margin-top: 30px;
+
+}
 
 /* footer */
 .footer {
