@@ -281,8 +281,16 @@ a {
 
 }
 */
-.slider {
-  margin-top: 110px;
+/*ad*/
+.ad {
+  margin-top: 130px;
+  width: 100%;
+  height: 100px;
+  background-color: powderblue;
+}
+
+.slider input {
+  display: none;
 }
 
 .slide-content {
@@ -297,10 +305,6 @@ a {
   text-align: center;
 }
 
-#slider input[type=radio] {
-  display: none;
-}
-
 #slider label {
   cursor: pointer;
   text-decoration: none;
@@ -308,10 +312,13 @@ a {
 
 #slides {
   height: 600px;
+  width: 80%;
   padding: 10px;
   border: 3px solid #ccc;
   background: #fff;
   position: relative;
+  left: 10%;
+  right: 10%;
   z-index: 1;
 }
 
@@ -372,15 +379,17 @@ a {
 }
 
 #controls {
+  background-color: yellow;
   margin: -130px 0px 0 0px;
-  width: 100%;
+  width: 80%;
+  left: 10%;
+  right: 10%;
   height: 50px;
-  z-index: 6;
+  z-index: 3;
   position: relative;
 }
 
 #controls label {
-  background-color: red;
   transition: opacity 0.2s ease-out;
   width: 50px;
   height: 50px;
@@ -395,7 +404,7 @@ a {
 #slide2:checked~#controls label:nth-child(3),
 #slide3:checked~#controls label:nth-child(4),
 #slide4:checked~#controls label:nth-child(1) {
-  background: url('https://www.flaticon.com/svg/vstatic/svg/860/860828.svg?token=exp=1620933975~hmac=2469404b59e07e643eb8cc26cb452c6b') no-repeat;
+  background: url(../img/next.png) no-repeat;
   float: right;
   margin: 0 -50px 0 0px;
   display: block;
@@ -405,7 +414,7 @@ a {
 #slide2:checked~#controls label:nth-last-child(3),
 #slide3:checked~#controls label:nth-last-child(4),
 #slide4:checked~#controls label:nth-last-child(1) {
-  background: url('https://www.flaticon.com/svg/vstatic/svg/860/860790.svg?token=exp=1620934005~hmac=e5be49f2e55c5a194c4018ee703d2d1c') no-repeat;
+  background: url(../img/left-arrow.png) no-repeat;
   float: left;
   margin: 0 0 0 -50px;
   display: block;
@@ -444,13 +453,6 @@ a {
   #slide4:checked~#bullets label:nth-child(4) {
     margin: 0;
   }
-}
-
-/*ad*/
-.ad {
-  width: 100%;
-  height: 100px;
-  background-color: powderblue;
 }
 
 /* hot */
