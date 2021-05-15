@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 微軟正黑體;
-
+  
 }
 
 /* heder start  */
@@ -379,7 +379,6 @@ a {
 }
 
 #controls {
-  background-color: yellow;
   margin: -130px 0px 0 0px;
   width: 80%;
   left: 10%;
@@ -564,6 +563,11 @@ a {
   font-size: 18px;
 }
 
+.list li :hover{
+  background-color: #B4B4B4;
+  color: white;
+}
+
 .all_list {
   width: 20%;
   background: white;
@@ -586,7 +590,6 @@ a {
   /* background: paleturquoise;*/
   background: powderblue;
   float: right;
-
   margin-top: 120px;
 
 }
