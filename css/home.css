@@ -103,8 +103,6 @@ nav li {
 }
 
 nav a {
-  color: inherit;
-  /* 移除超連結顏色 */
   display: block;
   /* 讓 <a> 填滿 <li> */
   font-size: 18px;
@@ -112,6 +110,8 @@ nav a {
   font-weight: bold;
   text-decoration: none;
   /* 移除超連結底線 */
+  color: inherit;
+  /* 移除超連結顏色 */
 }
 
 /* 滑鼠移到 <a> 時變成深底淺色 */
@@ -570,6 +570,15 @@ a {
   float: left;
   margin-top: 120px;
 
+}
+
+.list-a {
+  list-style: none;
+  color: black;
+  text-decoration: none;
+  /* 移除超連結底線 */
+  color: inherit;
+  /* 移除超連結顏色 */
 }
 
 .woman_product {
