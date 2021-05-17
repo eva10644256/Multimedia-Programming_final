@@ -1,72 +1,35 @@
-$(
-  function () {
-    var timer = null;
-    var liW = $(".banner ul li:first").innerWidth();
-    var n = 0;
-    timer = setInterval(function () {
-      play();
-    }, 2000)
-
-    function play() {
-      $(".banner ul").animate({
-        left: -liW
-      }, function () {
-        $(this).css("left", 0).find("li:first").appendTo(this);
-      })
-      n++;
-      if (n > 4) {
-        n = 0;
+    async
+    var $ONLINE=$(".ad");
+    var $WIN=$(window);
+    var $DOCUMENT=$(document);
+    var POS;
+    var $HTML=$("html,body");
+    var $IMG01 = $("#img01");
+    
+    POS=$WIN.height()-340;
+    $ONLINE.delay(2000).stop(true,false).animate({top:POS},800,"easeOutBack");
+    
+    $WIN.on("scroll resize",onSERVICE);
+    onSERVICE();
+    function onSERVICE(){
+      if($WIN.innerWidth()>768){
+      var POS = $WIN.scrollTop();
+      if(POS>520){
+        $IMG01.fadeIn(800);
+      }else{
+        $IMG01.fadeOut(800);
       }
-      $(".banner .num span").eq(n).addClass("on").siblings().removeClass("on");
+      POS=$WIN.height()-450;
+      $ONLINE.stop(true,false).animate({top:POS+$WIN.scrollTop()},800,"easeOutBack");
+      }
     }
-
-
-    $(".banner").hover(function () {
-      clearInterval(timer);
-    }, function () {
-      timer = setInterval(function () {
-        play();
-      }, 2000)
-    })
-
-
-    $(".next").click(function () {
-      play();
-    })
-
-    $(".prev").click(function () {
-      $(".banner ul").css("left", -liW).find("li:last").prependTo(".banner ul");
-      $(".banner ul").animate({
-        left: 0
-      });
-      n--;
-      if (n < 0) {
-        /*n=4;*/
-        n = ($(".banner ul li").length) - 1
-      }
-      $(".banner .num span").eq(n).addClass("on").siblings().removeClass("on");
-    })
-
-    $(".banner .num span").each(function (index) {
-      $(this).click(function () {
-        if (n < index) {
-          for (var i = n; i < index; i++) {
-            $(".banner ul").animate({
-              left: -liW
-            }, 400, function () {
-              $(this).css("left", 0).find("li:first").appendTo(this);
-            })
-          }
-        } else if (n > index) {
-          for (var i = n; i > index; i--) {
-            $(".banner ul").css("left", -liW).find("li:last").prependTo(".banner ul");
-            $(".banner ul").animate({
-              left: 0
-            }, 400);
-          }
-        }
-        n = index;
-        $(".banner .num span").eq(n).addClass("on").siblings().removeClass("on");
-      })
-    })
-  })
+    
+    $goTOP.on("click", goTOP);
+    $IMG01.on("click", goTOP);
+    
+    function goTOP(){
+      $HTML.animate({scrollTop:0},500);
+      return false;
+    }
+    
+  
