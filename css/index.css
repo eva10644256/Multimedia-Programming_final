@@ -40,10 +40,10 @@ body {
 
 .header .header_body img {
   margin-left: 50px;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 5px;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
 }
 
 .header .header_body .top_menu {
