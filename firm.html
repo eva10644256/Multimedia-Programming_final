@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/firm.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/index.css">
   <title>後台管理</title>
@@ -30,13 +30,11 @@
           <a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
-        <div class="header_menu">
+        <div class="firm_menu">
           <nav>
             <ul class="flex-nav">
-              <li><a href="woman.html">WOMAN</a></li>
-              <li><a href="man.html">MAN</a></li>
-              <li><a href="kids.html">KIDS</a></li>
-              <li><a href="sport.html">SPORT</a></li>
+              <li><a href="firm.html">產品狀態</a></li>
+              <li><a href="#">訂單查詢</a></li>
             </ul>
           </nav>
         </div>
@@ -45,100 +43,17 @@
   </header>
   
   <!--內容頁面-->
-  <div class="women-contant">
-    <div class="all_list">
-      <div class="list">
-        <h2><a href="woman.html" class="list-a">女裝</a></h2>
-        <hr color="black" align="left" width="80%" size="1">
-        <ul>
-          <li><a href="woman.html #top-w" class="list-a">上衣</a></li>
-          <li><a href="woman.html #down-w" class="list-a">下著</a></li>
-          <li><a href="woman.html #coat-w" class="list-a">外套</a></li>
-
-        </ul>
-      </div>
-      <div class="list">
-        <h2><a href="man.html" class="list-a">男裝</a></h2>
-        <hr color="black" align="left" width="80%" size="1">
-        <ul>
-          <li><a href="man.html #top-m" class="list-a">上衣</a></li>
-          <li><a href="man.html #down-m" class="list-a">下著</a></li>
-          <li><a href="man.html #coat-m" class="list-a">外套</a></li>
-        </ul>
-      </div>
-      <div class="list">
-        <h2><a href="kids.html" class="list-a">童裝</a></h2>
-        <hr color="black" align="left" width="80%" size="1">
-        <ul>
-          <li><a href="kids.html #top-k" class="list-a">上衣</a></li>
-          <li><a href="kids.html #down-k" class="list-a">下著</a></li>
-          <li><a href="kids.html #coat-k" class="list-a">外套</a></li>
-        </ul>
-      </div>
-      <div class="list">
-        <h2><a href="sport.html" class="list-a">運動</a></h2>
-        <hr color="black" align="left" width="80%" size="1">
-        <ul>
-          <li><a href="sport.html #top-s" class="list-a">上衣</a></li>
-          <li><a href="sport.html #down-s" class="list-a">下著</a></li>
-          <li><a href="sport.html #coat-s" class="list-a">外套</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="product_information">
-    <div class="product_img">
-      <img src="img/woman/w-1.jpg">
-    </div>
-    <div class="product_text">
-      <h1>商品名稱</h1>
-      <div class="number1">
-        <span class="span1">商品貨號</span>
-        <span class="span2">W001</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品價格</span>
-        <span class="span2">NT$300</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品介紹</span>
-        <span class="span2">100%純棉</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品尺寸</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇尺寸</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select></span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品數量</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇數量</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select></span>
-      </div>
-      <div class="number3">
-        <span class="span1">我要評分</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇評分</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select></span>
-      </div>
-      <input type="button" value="加入購物車" class="product_button">
-    </div>
+  <div class="firm_editor">
+    <form>
+      請輸入商品名稱:<input type="text"></input><br>
+      請輸入商品貨號:<input type="text"></input><br>
+      請輸入商品價格:<input type="text"></input><br>
+      請輸入商品介紹:<input type="text"></input><br>
+      請輸入商品庫存:<input type="text"></input><br>
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;請上傳圖檔:<input id="file" type="file"></input><br>
+      <img id="demo"/>
+      <input type="submit" value="送出">
+    </form>
   </div>
 
 
