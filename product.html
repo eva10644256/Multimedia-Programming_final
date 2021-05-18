@@ -132,14 +132,29 @@
       </div>
       <div class="number3">
         <span class="span1">我要評分</span>
-        <span class="span2"><select style="height: 25px;">
+        <span class="span2">
+          <!--<select style="height: 25px;">
             <option>請選擇評分</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
-          </select></span>
+          </select>-->
+          <div class="star">
+            <input type="radio" name="item" id="item01" checked />
+            <!--这里设置checked初始状态-->
+            <label class="star-item" for="item01" title="很差"></label>
+            <input type="radio" name="item" id="item02" />
+            <label class="star-item" for="item02" title="差"></label>
+            <input type="radio" name="item" id="item03" />
+            <label class="star-item" for="item03" title="一般"></label>
+            <input type="radio" name="item" id="item04" />
+            <label class="star-item" for="item04" title="很好"></label>
+            <input type="radio" name="item" id="item05" />
+            <label class="star-item" for="item05" title="完美"></label>
+          </div>
+        </span>
       </div>
       <input type="button" value="加入購物車" class="product_button">
     </div>
