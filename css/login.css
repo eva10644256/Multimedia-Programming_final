@@ -44,6 +44,11 @@ body {
   text-decoration: none;
 }
 
+#textbox{
+  height: 24px;
+  font-size: 14pt;
+}
+
 .container {
   background-color: var(--white);
   border-radius: var(--button-radius);
