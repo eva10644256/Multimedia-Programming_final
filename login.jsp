@@ -21,12 +21,6 @@
         <input type="email" placeholder="Email" class="input" name="Email" id = "textbox" />
         <input type="password" placeholder="Password" class="input" name="Password" id = "textbox" />
         <input type="password" placeholder="Check Your Password" class="input" name="RePassword" id = "textbox" />
-
-        <input type="text" placeholder="User" class="input" name="User" id = "textbox" required/>
-        <input type="email" placeholder="Email" class="input" name="Email" id = "textbox" required/>
-        <input type="password" placeholder="Password" class="input" name="Password" id = "textbox" required/>
-        <input type="password" placeholder="Check Your Password" class="input" name="RePassword" id = "textbox" required/>
-
         <button id="up" class="btn">Sign Up</button>
       </form>
     </div>
@@ -37,8 +31,6 @@
         <h2 class="form_title">Sign In</h2>
         <input type="email" placeholder="Email" class="input" name="email" id = "textbox" />
         <input type="password" placeholder="Password" class="input" name="password" id = "textbox" />
-        <input type="email" placeholder="Email" class="input" name="email" id = "textbox" required />
-        <input type="password" placeholder="Password" class="input" name="password" id = "textbox" required />
         <button id="in" class="btn">Sign In</button>
       </form>
     </div>
