@@ -24,10 +24,24 @@ try{
                     }
                     else
                     {
-                        out.println("<SCRIPT LANGUAGE='JavaScript'>");
-                        out.println("alert('帳號密碼錯誤！')");
-                        out.println("window.document.location.href='login.jsp';");
-                        out.println("</SCRIPT>");
+                        sql = "SELECT * FROM `admin` WHERE `mail`='" +request.getParameter("email")+"'AND `pwd`='"+request.getParameter("password")+"'";
+                        ResultSet rs_admin =con.createStatement().executeQuery(sql);
+                        
+                        if(rs_admin.next()){
+                            out.println("<SCRIPT LANGUAGE='JavaScript'>");
+                            out.println("alert('管理員你好，歡迎進入後台！')");
+                            out.println("window.document.location.href='firm.html';");
+                            out.println("</SCRIPT>");
+                        }
+
+                        else{
+
+                            out.println("<SCRIPT LANGUAGE='JavaScript'>");
+                            out.println("alert('帳號密碼錯誤！')");
+                            out.println("window.document.location.href='login.jsp';");
+                            out.println("</SCRIPT>");
+                        }
+
                     }
                 }
             else

@@ -1,3 +1,75 @@
+<%@ page import = "java.sql.*, java.util.*"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%
+try {
+//Step 1: 載入資料庫驅動程式 
+    Class.forName("com.mysql.jdbc.Driver");
+    try {
+//Step 2: 建立連線 	
+        String url="jdbc:mysql://localhost/?serverTimezone=UTC";
+        String sql="";
+        Connection con=DriverManager.getConnection(url,"root","1234");
+        if(con.isClosed())
+           out.println("連線建立失敗");
+        else {
+//Step 3: 選擇資料庫   
+            sql="use `bb`";
+            con.createStatement().execute(sql);
+            String new_search=new String(request.getParameter("search").getBytes("ISO-8859-1"),"UTF-8");
+
+            sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' GROUP BY goodname";  
+            ResultSet rs =con.createStatement().executeQuery(sql);
+            boolean flag = true;
+            String STOCK = "", PRICE="", NAME="", INTRO="", IMGPATH="" ;
+
+            while(rs.next())
+              {
+                flag=false;
+                STOCK = rs.getString("quan"); 
+                PRICE = rs.getString("price");
+                NAME = rs.getString("goodname");
+                INTRO = rs.getString("intro");
+                IMGPATH = rs.getString("path");
+              }
+
+            if(flag){
+                out.println("<SCRIPT LANGUAGE='JavaScript'>");
+                out.println("alert('查無資料')");
+                out.println("history.back();");
+                out.println("</SCRIPT>");
+                con.close();
+            }
+
+            sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 's'";  
+            ResultSet rs_s =con.createStatement().executeQuery(sql);
+            String STOCK_s="";
+            while(rs_s.next()){
+              STOCK_s = rs_s.getString("quan");
+            }
+
+            sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'm'";  
+            ResultSet rs_m =con.createStatement().executeQuery(sql);
+            String STOCK_m="";
+            while(rs_m.next()){
+              STOCK_m = rs_m.getString("quan");
+            }
+
+            sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'l'";  
+            ResultSet rs_l =con.createStatement().executeQuery(sql);
+            String STOCK_l="";
+            while(rs_l.next()){
+              STOCK_l = rs_l.getString("quan");
+            }
+
+            sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'xl'";  
+            ResultSet rs_xl =con.createStatement().executeQuery(sql);
+            String STOCK_xl="";
+            while(rs_xl.next()){
+              STOCK_xl = rs_xl.getString("quan");
+            }
+              
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,32 +158,42 @@
     </div>
   </div>
   <div class="product_information">
+
     <div class="product_img">
-      <img src="img/woman/w-1.jpg">
+      <img src="<%=IMGPATH%>">
     </div>
     <div class="product_text">
-      <h1>商品名稱</h1>
+      <h1><%=NAME%></h1>
       <div class="number1">
         <span class="span1">商品庫存</span>
-        <span class="span2">001</span>
+        <span class="span2"  id="Stocknumber"><%=STOCK%></span>
       </div>
       <div class="number2">
         <span class="span1">商品價格</span>
-        <span class="span2">NT$300</span>
+        <span class="span2">NT$<%=PRICE%></span>
       </div>
       <div class="number2">
         <span class="span1">商品介紹</span>
-        <span class="span2">100%純棉</span>
+        <span class="span2"><%=INTRO%></span>
       </div>
       <div class="number2">
         <span class="span1">商品尺寸</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select></span>
+        <span class="span2">
+            <input type="button" onclick = "changeStock(<%=STOCK_s%>)" value="S">
+            <input type="button" onclick = "changeStock(<%=STOCK_m%>)" value="M">
+            <input type="button" onclick = "changeStock(<%=STOCK_l%>)" value="L">
+            <input type="button" onclick = "changeStock(<%=STOCK_xl%>)" value="XL">
+          </span>
       </div>
+
+      <script>
+
+        function changeStock(s)
+        {
+          document.getElementById("Stocknumber").innerHTML=s; //改變剩餘數量的數字
+        }
+      </script>
+
       <div class="number2">
         <span class="span1">商品數量</span>
         <span class="span2"><select style="height: 25px;">
@@ -158,3 +240,21 @@
 </body>
 
 </html>
+
+
+<%
+//Step 6: 關閉連線
+           con.close();
+//Step 5: 顯示結果 
+          //直接顯示最新的資料
+          //response.sendRedirect("signin&register.jsp");
+        }
+  }
+    catch (SQLException sExec) {
+           out.println("SQL錯誤"+sExec.toString());
+    }
+}
+catch (ClassNotFoundException err) {
+   out.println("class錯誤"+err.toString());
+}
+%>
