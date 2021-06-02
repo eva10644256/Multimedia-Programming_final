@@ -19,16 +19,15 @@
 <body>
   <header class="header">
     <div class="header_body">
-      <a href="index.html"><img src="img/logo.jpg"></a>
+      <a href="index.jsp"><img src="img/logo.jpg"></a>
       <div class="top_menu">
 
         <div class="header_top">
           <form action="product.jsp" method="post">
           <div class="search-box">
             <input class="search-txt" type="text" name="search" placeholder="Type to search">
-            <a class="search-btn" href="#">
               <i class="fa fa-search"></i>
-            </a>
+              <input type="button" class="search-btn"value="">
           </form>
 
           </div>
@@ -273,9 +272,7 @@
   </div>
   <footer class="footer">
     <div class="f">
-
-      © big_big_xuan | 2021 多媒體回家作業2 | 個人履歷網站
-
+      <a href="member.html">關於我們</a> | 您是第00個顧客 | © 活久見
     </div>
   </footer>
   <script async>

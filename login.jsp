@@ -43,12 +43,12 @@
         <div class="overlay_panel overlay--left">
           <button class="btn" id="signIn" onclick="javascript:test();" type="button">Sign In</button>
           <br>
-          <a href="index.html"><button class="btn">&ensp;Home&ensp;</button></a>
+          <a href="index.jsp"><button class="btn">&ensp;Home&ensp;</button></a>
         </div>
         <div class="overlay_panel overlay--right">
           <button class="btn" id="signUp" onclick="javascript:test();" type="button">Sign Up</button>
           <br>
-          <a href="index.html"> <button class="btn" >&ensp;Home&ensp;</button></a>
+          <a href="index.jsp"> <button class="btn" >&ensp;Home&ensp;</button></a>
         </div>
       </div>
     </div>
