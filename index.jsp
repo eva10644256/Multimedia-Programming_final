@@ -25,8 +25,9 @@
         <div class="header_top">
           <form action="product.jsp" method="post">
           <div class="search-box">
-            <input class="search-txt" type="text" name="search" placeholder="Type to search">
-              <i class="fa fa-search"></i>
+              <select>
+                
+              </select>
               <input type="button" class="search-btn"value="">
           </form>
 
