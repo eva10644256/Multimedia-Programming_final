@@ -20,7 +20,7 @@ body {
 /* heder start  */
 .header {
   width: 100%;
-  height: 130px;
+  height: 120px;
   background-color: white;
   position: fixed;
   /* 固定位置定位*/
@@ -31,7 +31,7 @@ body {
 
 .header .header_body {
   width: 100%;
-  height: 130px;
+  height: 120px;
   padding: 0;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@ body {
 
 .header .header_body .top_menu {
   width: 1000px;
-  height: 130px;
+  height: 120px;
   display: flex;
   flex-direction: column;
 }
@@ -64,7 +64,7 @@ body {
 
 .header .header_body .top_menu .header_top {
   width: 300px;
-  height: 70px;
+  height: 60px;
   margin-left: 60%;
   margin-bottom: 10px;
   padding-left: 20px;
@@ -73,7 +73,7 @@ body {
 }
 
 .header .header_body .top_menu .header_down {
-  height: 70px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -182,123 +182,10 @@ nav a:hover {
 
 
 
-/*
-.picture_rotation {
 
-  margin-top: 150px;
-  width: 100%;
-  height: 400px;
-  position: relative;
-  top: 30px;
-  bottom: 30px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.banner {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  margin: 100px auto;
-  position: relative;
-}
-
-.banner ul {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-
-}
-
-.banner ul li {
-  float: left;
-  list-style-type: none;
-  width: 100%;
-  height: 100%;
-
-}
-
-.banner img {
-  width: 100%;
-  height: 100%;
-}
-
-.banner .num {
-  width: 100%;
-  height: 20px;
-
-  position: absolute;
-  left: 0;
-  bottom: 10px;
-  text-align: center;
-}
-
-.banner .num span {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: white;
-  margin: 0 8px;
-  cursor: pointer;
-}
-
-.banner .prev {
-  display: block;
-  width: 40px;
-  height: 74px;
-  background-color: rgb(0, 0, 0, 0.2);
-  color: rgba(255, 255, 255, 0.4);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -37px;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-.banner .next {
-  display: block;
-  width: 40px;
-  height: 74px;
-  background-color: rgb(0, 0, 0, 0.2);
-  color: rgba(255, 255, 255, 0.4);
-  position: absolute;
-  right: 0;
-  top: 50%;
-  margin-top: -37px;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-.banner .prev i,
-.banner .next i {
-  font-size: 30px;
-  line-height: 74px;
-  transition: background-color 0.3s;
-}
-
-.banner .prev:hover,
-.banner .next:hover {
-  background-color: brga(0, 0, 0, 0.5);
-  color: #fff;
-}
-
-.banner .num span:hover {
-  background-color: #ccc;
-}
-
-.banner .num span.on {
-  width: 30px;
-  height: 15px;
-
-}
-*/
 /*marquee*/
 .marquee {
-  margin-top: 130px;
+  margin-top: 120px;
   width: 100%;
   height: 30px;
   padding-top: 3px;
