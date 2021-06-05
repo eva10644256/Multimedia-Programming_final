@@ -53,10 +53,12 @@ body {
   flex-direction: column;
 }
 
-.header .header_body .top_menu .header_menu {
+.header .header_body .top_menu .header_down .header_menu {
   height: 50px;
   justify-content: flex-end;
-  margin-right: 25%;
+  margin-right: 5%;
+  width: 590px;
+
 
 }
 
@@ -68,6 +70,54 @@ body {
   padding-left: 20px;
   text-align: right;
   padding-right: 10px;
+}
+
+.header .header_body .top_menu .header_down {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* search */
+.header .header_body .top_menu .header_down .search {
+  height: 50px;
+  width: 500px;
+  margin-right: 8%;
+  background: #F8F8FF;
+}
+
+.search .select_box {
+  padding: 0px;
+  font-weight: bold;
+
+}
+
+.select_box .select_style {
+  height: 50px;
+  font-size: 15px;
+  margin-right: 5px;
+  border: none;
+  background: none;
+  cursor: pointer
+}
+
+.select_box .search-btn {
+  color: #2f3640;
+  float: right;
+  width: 50px;
+  height: 40px;
+  border-radius: 10%;
+  background: #F8F8FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.4s;
+  font-size: 15px;
+  border: 2px solid #C4E1FF;
+  margin: 5px;
+  font-weight: bold;
+  cursor: pointer
 }
 
 .header .header_body .top_menu .header_top i {
@@ -85,49 +135,6 @@ body {
   /* 移除超連結顏色 */
   margin-left: 3%;
   font-weight: bold;
-}
-
-/* search */
-.header .header_body .top_menu .header_top .search-box {
-  position: absolute;
-  margin-left: 4%;
-  width: 170px;
-  top: 22px;
-  transform: translate(-50%, -50%);
-  background: #F8F8FF;
-  height: 10px;
-  border-radius: 40px;
-  padding: 10px;
-
-}
-
-
-
-.header .header_body .top_menu .header_top .search-btn {
-  color: #2f3640;
-  float: right;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #F8F8FF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: 0.4s;
-}
-
-.header .header_body .top_menu .header_top .search-txt {
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: #2f3640;
-  font-size: 10px;
-  transition: 0.4s;
-  line-height: 10px;
-
 }
 
 
