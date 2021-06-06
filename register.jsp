@@ -45,7 +45,7 @@ try {
                         
                         con.createStatement().execute(sql);
                         out.println("<SCRIPT LANGUAGE='JavaScript'>");
-                        out.println("alert('註冊成功！')");
+                        out.println("alert('註冊成功！請直接登入')");
                         out.println("window.document.location.href='login.jsp';");
                         out.println("</SCRIPT>");
                     }

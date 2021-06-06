@@ -1,3 +1,20 @@
+<%@ page import = "java.sql.*, java.util.*"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%
+try
+{
+    Class.forName("com.mysql.jdbc.Driver");
+    try
+    {
+        String url="jdbc:mysql://localhost/?serverTimezone=UTC";
+        Connection con=DriverManager.getConnection(url,"root","1234");
+        if(con.isClosed())
+            out.println("連線建立失敗");
+        else
+        {
+          con.createStatement().execute("USE `bb`");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +26,14 @@
   <script src="js/index.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/index.css">
-  <title>產品資訊</title>
+  <title>女裝</title>
 </head>
+
+<style>
+  body{
+    background-color: white;
+  }
+</style>
 
 <body>
   <header class="header">
@@ -21,16 +44,15 @@
         <div class="header_top">
 
 
-      <%if(session.getAttribute("ID")!=null)
-      {
-        out.println("<a href='logout.jsp' class='login-text'>登出</a>");
-        out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
-      }
-      else{
-        out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
-        out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
-      }
-      %>
+          <%if(session.getAttribute("ID")!=null)
+          {
+            out.println("<a href='logout.jsp' class='login-text'>登出</a>");
+            out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
+          }
+          else{
+            out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
+            out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
+          }%>
           <a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
@@ -131,118 +153,200 @@
       </div>
     </div>
   </header>
+
+  <!--輪播圖片-->
+  <div class="picture_rotation">
+  </div>
+
   <!--內容頁面-->
   <div class="women-contant">
     <div class="all_list">
       <div class="list">
-        <h2><a href="woman.html" class="list-a">女裝</a></h2>
+        <h2><a href="woman.jsp" class="list-a">女裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="woman.html #top-w" class="list-a">上衣</a></li>
-          <li><a href="woman.html #down-w" class="list-a">下著</a></li>
-          <li><a href="woman.html #coat-w" class="list-a">外套</a></li>
+          <li><a href="woman.jsp#top-w" class="list-a">上衣</a></li>
+          <li><a href="woman.jsp#down-w" class="list-a">下著</a></li>
+          <li><a href="woman.jsp#coat-w" class="list-a">外套</a></li>
 
         </ul>
       </div>
       <div class="list">
-        <h2><a href="man.html" class="list-a">男裝</a></h2>
+        <h2><a href="man.jsp" class="list-a">男裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="man.html #top-m" class="list-a">上衣</a></li>
-          <li><a href="man.html #down-m" class="list-a">下著</a></li>
-          <li><a href="man.html #coat-m" class="list-a">外套</a></li>
+          <li><a href="man.jsp#top-m" class="list-a">上衣</a></li>
+          <li><a href="man.jsp#down-m" class="list-a">下著</a></li>
+          <li><a href="man.jsp#coat-m" class="list-a">外套</a></li>
         </ul>
       </div>
       <div class="list">
-        <h2><a href="kids.html" class="list-a">童裝</a></h2>
+        <h2><a href="kids.jsp" class="list-a">童裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="kids.html #top-k" class="list-a">上衣</a></li>
-          <li><a href="kids.html #down-k" class="list-a">下著</a></li>
-          <li><a href="kids.html #coat-k" class="list-a">外套</a></li>
+          <li><a href="kids.jsp#top-k" class="list-a">上衣</a></li>
+          <li><a href="kids.jsp#down-k" class="list-a">下著</a></li>
+          <li><a href="kids.jsp#coat-k" class="list-a">外套</a></li>
         </ul>
       </div>
       <div class="list">
-        <h2><a href="sport.html" class="list-a">運動</a></h2>
+        <h2><a href="sport.jsp" class="list-a">運動</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="sport.html #top-s" class="list-a">上衣</a></li>
-          <li><a href="sport.html #down-s" class="list-a">下著</a></li>
-          <li><a href="sport.html #coat-s" class="list-a">外套</a></li>
+          <li><a href="sport.jsp#top-s" class="list-a">上衣</a></li>
+          <li><a href="sport.jsp#down-s" class="list-a">下著</a></li>
+          <li><a href="sport.jsp#coat-s" class="list-a">外套</a></li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="product_information">
-    <div class="product_img">
-      <img src="img/woman/w-1.jpg">
-    </div>
-    <div class="product_text">
-      <h1>商品名稱</h1>
-      <div class="number1">
-        <span class="span1">商品庫存</span>
-        <span class="span2">001</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品價格</span>
-        <span class="span2">NT$300</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品介紹</span>
-        <span class="span2">100%純棉</span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品尺寸</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select></span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品數量</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇數量</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select></span>
-      </div>
-      <div class="number3">
-        <span class="span1">我要評分</span>
-        <span class="span2">
-          <!--<select style="height: 25px;">
-            <option>請選擇評分</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>-->
-          <div class="star">
-            <input type="radio" name="item" id="item01" checked />
-            <!--这里设置checked初始状态-->
-            <label class="star-item" for="item01" title="很差"></label>
-            <input type="radio" name="item" id="item02" />
-            <label class="star-item" for="item02" title="差"></label>
-            <input type="radio" name="item" id="item03" />
-            <label class="star-item" for="item03" title="一般"></label>
-            <input type="radio" name="item" id="item04" />
-            <label class="star-item" for="item04" title="很好"></label>
-            <input type="radio" name="item" id="item05" />
-            <label class="star-item" for="item05" title="完美"></label>
+    <div class="woman_product">
+      <div id="top-w">
+        <div data-content="上衣" class="hr"></div>
+        <div class="hot_box">
+          <div class="hot_title">
+            上衣
           </div>
-        </span>
+          <div class="hot_box_productbox">
+          <%
+            String sqlwt = "SELECT * FROM goods WHERE type = 'woman' AND kind='top' group by goodname ";
+            ResultSet rswt = con.createStatement().executeQuery(sqlwt);
+            while(rswt.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rswt.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rswt.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rswt.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+            <!--<div class="hot_box_product">
+              <a href="product.jsp"><img src="img/woman/w-1.jpg" class="img-fluid">
+                <p>品名</p>
+              </a>
+            </div>
+
+            <div class="hot_box_product">
+              <img src="img/woman/w-2.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+
+            <div class="hot_box_product">
+              <img src="img/woman/w-3.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            
+            <div class="hot_box_product">
+              <img src="img/woman/w-4.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>-->
+
+          </div>
+        </div>
       </div>
-      <input type="button" value="加入購物車" class="product_button">
+      <div id="down-w">
+        <div data-content="下著" class="hr"></div>
+        <div class="hot_box">
+          <div class="hot_title">
+            下著
+          </div>
+          <div class="hot_box_productbox">
+          <%
+            String sqlwb = "SELECT * FROM goods WHERE type = 'woman' AND kind='bottom' group by goodname ";
+            ResultSet rswb = con.createStatement().executeQuery(sqlwb);
+            while(rswb.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rswb.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rswb.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rswb.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+            <!--<div class="hot_box_product">
+              <img src="img/woman/w-6.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-7.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-8.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-9.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>-->
+
+          </div>
+        </div>
+      </div>
+      <div id="coat-w">
+        <div data-content="外套" class="hr"></div>
+        <div class="hot_box">
+          <div class="hot_title">
+            外套
+          </div>
+          <div class="hot_box_productbox">
+          <%
+            String sqlwo = "SELECT * FROM goods WHERE type = 'woman' AND kind='outer' group by goodname ";
+            ResultSet rswo = con.createStatement().executeQuery(sqlwo);
+            while(rswo.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rswo.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rswo.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rswo.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+            <!--<div class="hot_box_product">
+              <img src="img/woman/w-11.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-12.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-13.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_box_product">
+              <img src="img/woman/w-14.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>-->
+
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-
-
 </body>
 
 </html>
+<%
+    con.close();
+}
+	}
+    catch (SQLException sExec)
+    {
+        out.println("SQL錯誤"+sExec.toString());
+    }
+}
+catch (ClassNotFoundException err)
+{
+   out.println("class錯誤"+err.toString());
+}
+%>

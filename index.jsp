@@ -1,5 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*, java.util.*"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%
+try
+{
+    Class.forName("com.mysql.jdbc.Driver");
+    try
+    {
+        String url="jdbc:mysql://localhost/?serverTimezone=UTC";
+        Connection con=DriverManager.getConnection(url,"root","1234");
+        if(con.isClosed())
+            out.println("連線建立失敗");
+        else
+        {
+          con.createStatement().execute("USE `bb`");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +24,7 @@
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/index.js" type="text/javascript"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/index.css">
   <title>活久見</title>
@@ -25,8 +39,16 @@
         <div class="header_top">
 
 
-          <a href="login.jsp" class="login-text">註冊/登入</a>
-          <a href="#"><i class="fa fa-user"></i></a>
+      <%if(session.getAttribute("ID")!=null)
+      {
+        out.println("<a href='logout.jsp' class='login-text'>登出</a>");
+        out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
+      }
+      else{
+        out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
+        out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
+      }
+      %>
           <a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
@@ -34,17 +56,17 @@
           <div class="header_menu">
             <nav>
               <ul class="flex-nav">
-                <li><a href="woman.html">WOMAN</a></li>
-                <li><a href="man.html">MAN</a></li>
-                <li><a href="kids.html">KIDS</a></li>
-                <li><a href="sport.html">SPORT</a></li>
+                <li><a href="woman.jsp">WOMAN</a></li>
+                <li><a href="man.jsp">MAN</a></li>
+                <li><a href="kids.jsp">KIDS</a></li>
+                <li><a href="sport.jsp">SPORT</a></li>
               </ul>
             </nav>
           </div>
           <div class="search">
             <div class="select_box">
               <form action="product.jsp" method="post">
-                <select size="1" class="select_style">
+                <select size="1" class="select_style" name="search">
                   <option value="請選擇商品" style="font-weight: bold;"><strong>請選擇商品</strong></option>
                   <optgroup label="女裝-上衣">
                     <option value="甜美蕾絲拼接小可愛">甜美蕾絲拼接小可愛</option>
@@ -119,7 +141,7 @@
                     <option value="造型高領運動休閒外套">造型高領運動休閒外套</option>
                   </optgroup>
                 </select>
-                <input type="button" class="search-btn" value="搜尋">
+                <input type="submit" class="search-btn" value="搜尋">
               </form>
             </div>
           </div>
@@ -153,22 +175,22 @@
 
           <div class="slide slide_1">
             <div class="slide-content">
-              <a href="woman.html #coat-w" title="點我前往頁面"><img src="img/phome-1.jpg"></a>
+              <a href="woman.jsp #coat-w" title="點我前往頁面"><img src="img/phome-1.jpg"></a>
             </div>
           </div>
           <div class="slide slide_2">
             <div class="slide-content">
-              <a href="woman.html #top-w" title="點我前往頁面"><img src="img/phome-2.jpg"></a>
+              <a href="woman.jsp #top-w" title="點我前往頁面"><img src="img/phome-2.jpg"></a>
             </div>
           </div>
           <div class="slide slide_3">
             <div class="slide-content">
-              <a href="man.html" title="點我前往頁面"><img src="img/phome-3.jpg"></a>
+              <a href="man.jsp" title="點我前往頁面"><img src="img/phome-3.jpg"></a>
             </div>
           </div>
           <div class="slide slide_4">
             <div class="slide-content">
-              <a href="kids.html #down-k" title="點我前往頁面"><img src="img/phome-4.jpg"></a>
+              <a href="kids.jsp #down-k" title="點我前往頁面"><img src="img/phome-4.jpg"></a>
             </div>
           </div>
 
@@ -199,7 +221,22 @@
         發燒推薦
       </div>
       <div class="hot_box_productbox">
-        <div class="hot_box_product">
+      <%
+            String sqlsn = "SELECT *, SUM(salenum) FROM goods GROUP BY goodname ORDER BY SUM(salenum) DESC LIMIT 5";
+            ResultSet rssn = con.createStatement().executeQuery(sqlsn);
+            while(rssn.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rssn.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rssn.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rssn.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+        <!--<div class="hot_box_product">
           <img src="img/p1.jpg" class="img-fluid">
           <p>品名</p>
         </div>
@@ -218,7 +255,7 @@
         <div class="hot_box_product">
           <img src="img/p5.jpg" class="img-fluid">
           <p>品名</p>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
@@ -231,7 +268,22 @@
         <div style="background-color:rgba(255, 66, 117, 0.8) ;">WOMAN</div>
       </div>
       <div class="hot_box_productbox">
-        <div class="hot_box_product">
+        <%
+            String sqlw = "SELECT * FROM goods WHERE type = 'woman' group by goodname LIMIT 5";
+            ResultSet rsw = con.createStatement().executeQuery(sqlw);
+            while(rsw.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rsw.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rsw.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rsw.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+        <!--<div class="hot_box_product">
           <img src="img/p1.jpg" class="img-fluid">
           <p>品名</p>
         </div>
@@ -250,7 +302,8 @@
         <div class="hot_box_product">
           <img src="img/p5.jpg" class="img-fluid">
           <p>品名</p>
-        </div>
+        </div>-->
+
       </div>
     </div>
   </div>
@@ -263,7 +316,23 @@
         <div style="background-color:rgba(16, 99, 181, 0.8) ;">MAN</div>
       </div>
       <div class="hot_box_productbox">
-        <div class="hot_box_product">
+      <%
+            String sqlm = "SELECT * FROM goods WHERE type = 'man' group by goodname LIMIT 5";
+            ResultSet rsm = con.createStatement().executeQuery(sqlm);
+            while(rsm.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rsm.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rsm.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rsm.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+
+        <!--<div class="hot_box_product">
           <img src="img/p1.jpg" class="img-fluid">
           <p>品名</p>
         </div>
@@ -282,7 +351,8 @@
         <div class="hot_box_product">
           <img src="img/p5.jpg" class="img-fluid">
           <p>品名</p>
-        </div>
+        </div>-->
+
       </div>
     </div>
   </div>
@@ -295,7 +365,22 @@
         <div style="background-color:rgba(235, 107, 9, 0.8);">KIDS</div>
       </div>
       <div class="hot_box_productbox">
-        <div class="hot_box_product">
+      <%
+            String sqlk = "SELECT * FROM goods WHERE type = 'kids' group by goodname LIMIT 5";
+            ResultSet rsk = con.createStatement().executeQuery(sqlk);
+            while(rsk.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rsk.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rsk.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rsk.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+        <!--<div class="hot_box_product">
           <img src="img/p1.jpg" class="img-fluid">
           <p>品名</p>
         </div>
@@ -314,7 +399,8 @@
         <div class="hot_box_product">
           <img src="img/p5.jpg" class="img-fluid">
           <p>品名</p>
-        </div>
+        </div>-->
+
       </div>
     </div>
   </div>
@@ -327,7 +413,22 @@
         <div style="background-color:rgba(58, 140, 24, 0.8);">SPORT</div>
       </div>
       <div class="hot_box_productbox">
-        <div class="hot_box_product">
+      <%
+            String sqls = "SELECT * FROM goods WHERE type = 'sport' group by goodname LIMIT 5";
+            ResultSet rss = con.createStatement().executeQuery(sqls);
+            while(rss.next())
+            {
+                out.println("<div class='hot_box_product'>");
+                out.println("<form action='product.jsp' method='post'>");
+                out.println("<input type='hidden' name='search' value='"+rss.getString("goodname")+"'>");
+                out.println("<a href='product.jsp'><input type='image' src='"+rss.getString("path")+"' class='img-fluid'>");
+                out.println("<p>"+rss.getString("goodname")+"</p>");
+                out.println("</a>");
+                out.println("</form>");
+                out.println("</div>");
+            }
+        %>
+        <!--<div class="hot_box_product">
           <img src="img/p1.jpg" class="img-fluid">
           <p>品名</p>
         </div>
@@ -346,13 +447,28 @@
         <div class="hot_box_product">
           <img src="img/p5.jpg" class="img-fluid">
           <p>品名</p>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
   <footer class="footer">
     <div class="f">
-      <a href="member.html">關於我們</a> | 您是第00個顧客 | © 活久見
+      <a href="member.html">關於我們</a> | 您是第<% 
+          String counter="";
+          counter="select * from counter";
+			    ResultSet rc=con.createStatement().executeQuery(counter);
+
+            if (rc.next()){
+                String countString = rc.getString(1);
+                int count = Integer.parseInt(countString);
+                if (session.isNew())
+                {
+                    count++;
+                    counter="UPDATE counter SET counter = " + count ;
+                    con.createStatement().execute(counter);
+                }
+            out.println(count);
+       %>個顧客 | © 活久見
     </div>
   </footer>
   <script async>
@@ -435,3 +551,17 @@
 </body>
 
 </html>
+<%
+    con.close();
+}
+	}}
+    catch (SQLException sExec)
+    {
+        out.println("SQL錯誤"+sExec.toString());
+    }
+}
+catch (ClassNotFoundException err)
+{
+   out.println("class錯誤"+err.toString());
+}
+%>

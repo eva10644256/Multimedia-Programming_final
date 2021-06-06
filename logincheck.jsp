@@ -20,7 +20,7 @@ try{
                     if(rs.next())
                     {
                   	    session.setAttribute("ID",rs.getString("memID"));
-                        response.setHeader("Refresh","0;index.html");
+                        response.setHeader("Refresh","0;index.jsp");
                     }
                     else
                     {
