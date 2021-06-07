@@ -598,6 +598,48 @@ nav a:hover {
   margin-right: 12px;
 }
 
+/*comment*/
+.comment{
+  padding: 0;
+  background: blanchedalmond;
+  width: 80%;
+  float: right;
+}
+
+.comment form{
+  margin-left: 25%;
+}
+
+.comment textarea{
+  height: 30px;
+  font-size: 14pt;
+  width: 80%;
+  background-color: blanchedalmond;
+  border-top: 0px solid;
+  border-left: 0px solid;
+  border-right: 0px solid;
+}
+
+.comment-btn{
+  color: #2f3640;
+  width: 50px;
+  height: 40px;
+  border-radius: 10%;
+  background: #F8F8FF;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.4s;
+  font-size: 15px;
+  border: 2px solid #C4E1FF;
+  font-weight: bold;
+  cursor: pointer
+}
+
+.board{
+  text-align: center;
+  font-size: 14pt;
+}
 /* star */
 .star {
   display: inline-block;

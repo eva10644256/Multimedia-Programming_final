@@ -14,9 +14,8 @@
 <body>
   <div class="mem_container">
     <!-- 註冊 -->
-    <form action="memprofilechange.jsp" method="post">
     <div class="mem_container_form">
-      <form action="#" class="form" id="form1">
+      <form action="memprofilechange.jsp" class="form"  method="post" id="form1">
         <h2 class="form_title">修改資料</h2>
         <input type="text" placeholder="User" class="input" name="username"/>
         <input type="email" placeholder="Email" class="input" name="email"/>
@@ -25,7 +24,6 @@
         <button class="btn" value="submit">修改</button>
       </form>
     </div>
-    </form>
 
 
   </div>

@@ -83,7 +83,11 @@ try {
   <link rel="stylesheet" href="css/index.css">
   <title>產品資訊</title>
 </head>
-
+<style>
+  body{
+    background-color: white;
+  }
+</style>
 <body>
   <header class="header">
     <div class="header_body">
@@ -323,8 +327,24 @@ try {
       <input type="button" value="加入購物車" class="product_button">
     </div>
   </div>
-
-
+  <hr style="border: 1px solid gray">
+  <div class="comment">
+  <h1>留言板</h1>
+  <form>
+    <textarea rows="1" placeholder="輸入你想要寫的內容..."></textarea>
+    <input type="submit" value="留言" class="comment-btn">
+  </form>
+  <hr>
+  <div class="board">
+  使用者帳號1 時間<br>
+  抓留言資料庫
+  </div>
+  <hr>
+    <div class="board">
+  使用者帳號2 時間<br>
+  抓留言資料庫
+  </div>
+  </div>
 </body>
 
 </html>

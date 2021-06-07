@@ -498,7 +498,6 @@ try
       }
     }
     
-    $goTOP.on("click", goTOP);
     $IMG01.on("click", goTOP);
     
     function goTOP(){
