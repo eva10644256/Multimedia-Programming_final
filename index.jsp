@@ -1,6 +1,9 @@
+<!DOCTYPE html>
 <%@ page import = "java.sql.*, java.util.*"%>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%
+ String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 try
 {
     Class.forName("com.mysql.jdbc.Driver");
@@ -14,9 +17,8 @@ try
         {
           con.createStatement().execute("USE `bb`");
 %>
-<!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +26,6 @@ try
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/index.js" type="text/javascript"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/index.css">
   <title>活久見</title>
@@ -472,85 +473,41 @@ try
     </div>
   </footer>
   <script async>
-    var $ONLINE = $(".ad");
-    var $WIN = $(window);
-    var $DOCUMENT = $(document);
+    var $ONLINE=$(".ad");
+    var $WIN=$(window);
+    var $DOCUMENT=$(document);
     var POS;
-    var $BTN = $("#BTN");
-    var $NAVNAV = $("#NAVNAV");
-    var $goTOP = $("#goTOP");
-    var $HTML = $("html,body");
-    var $FOOTER = $("#FOOTFOOT");
-    var $BottomNAV = $("#BottomNAV");
-    var $MOBI = $("#mobile-contact");
+    var $HTML=$("html,body");
     var $IMG01 = $("#img01");
-
-    POS = $WIN.height() - 340;
-    $ONLINE.delay(2000).stop(true, false).animate({
-      top: POS
-    }, 800, "easeOutBack");
-
-    $WIN.on("scroll resize", onSERVICE);
+    
+    POS=$WIN.height()-340;
+    $ONLINE.delay(2000).stop(true,false).animate({top:POS},800,"easeOutBack");
+    
+    $WIN.on("scroll resize",onSERVICE);
     onSERVICE();
-
-    function onSERVICE() {
-      if ($WIN.innerWidth() > 768) {
-        var POS = $WIN.scrollTop();
-        if (POS > 520) {
-          $IMG01.fadeIn(800);
-        } else {
-          $IMG01.fadeOut(800);
-        }
-        POS = $WIN.height() - 450;
-        $ONLINE.stop(true, false).animate({
-          top: POS + $WIN.scrollTop()
-        }, 800, "easeOutBack");
+    function onSERVICE(){
+      if($WIN.innerWidth()>768){
+      var POS = $WIN.scrollTop();
+      if(POS>520){
+        $IMG01.fadeIn(800);
+      }else{
+        $IMG01.fadeOut(800);
+      }
+      POS=$WIN.height()-450;
+      $ONLINE.stop(true,false).animate({top:POS+$WIN.scrollTop()},800,"easeOutBack");
       }
     }
-
-
-    $BTN.on("click", OPENOPEN);
-
-    function OPENOPEN() {
-      $NAVNAV.slideDown(200);
-      $NAVNAV.on("click", CLOSECLOSE);
-    }
-
-    function CLOSECLOSE() {
-      $NAVNAV.slideUp(200);
-      $NAVNAV.off("click");
-    }
-
-    $WIN.on("scroll resize", function CLEARSTYLE() {
-      if ($WIN.innerWidth() < 667) {
-        $BottomNAV.load("/course/mobile-contact.php");
-      }
-      if ($WIN.innerWidth() > 667) {
-        $NAVNAV.removeAttr("style");
-        //$MOBI.remove();
-      }
-    });
-
-
-    $(document).ready(function () {
-      if ($WIN.innerWidth() < 667) {
-        $BottomNAV.load("/course/mobile-contact.php");
-      }
-    })
-
+    
     $goTOP.on("click", goTOP);
     $IMG01.on("click", goTOP);
-
-    function goTOP() {
-      $HTML.animate({
-        scrollTop: 0
-      }, 500);
+    
+    function goTOP(){
+      $HTML.animate({scrollTop:0},500);
       return false;
     }
   </script>
 </body>
 
-</html>
 <%
     con.close();
 }
@@ -565,3 +522,4 @@ catch (ClassNotFoundException err)
    out.println("class錯誤"+err.toString());
 }
 %>
+</html>

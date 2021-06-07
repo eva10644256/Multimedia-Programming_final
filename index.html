@@ -10,7 +10,6 @@
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/index.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/index.css">
   <title>活久見</title>
@@ -277,18 +276,11 @@
     </div>
   </footer>
   <script async>
-    
     var $ONLINE=$(".ad");
     var $WIN=$(window);
     var $DOCUMENT=$(document);
     var POS;
-    var $BTN = $("#BTN");
-    var $NAVNAV = $("#NAVNAV");
-    var $goTOP = $("#goTOP");
     var $HTML=$("html,body");
-    var $FOOTER = $("#FOOTFOOT");
-    var $BottomNAV = $("#BottomNAV");
-    var $MOBI = $("#mobile-contact");
     var $IMG01 = $("#img01");
     
     POS=$WIN.height()-340;
@@ -309,36 +301,6 @@
       }
     }
     
-  
-    $BTN.on("click", OPENOPEN );
-    
-    function OPENOPEN(){
-      $NAVNAV.slideDown(200);
-      $NAVNAV.on("click", CLOSECLOSE );
-    }
-    
-    function CLOSECLOSE(){
-      $NAVNAV.slideUp(200);
-      $NAVNAV.off("click");
-    }
-    
-    $WIN.on("scroll resize",function CLEARSTYLE(){
-      if($WIN.innerWidth()<667){
-        $BottomNAV.load("/course/mobile-contact.php");
-      }
-      if($WIN.innerWidth()>667){
-        $NAVNAV.removeAttr("style");
-        //$MOBI.remove();
-      }
-    });
-    
-    
-    $(document).ready(function (){
-      if($WIN.innerWidth()<667){
-        $BottomNAV.load("/course/mobile-contact.php");
-      }
-    })
-    
     $goTOP.on("click", goTOP);
     $IMG01.on("click", goTOP);
     
@@ -346,8 +308,6 @@
       $HTML.animate({scrollTop:0},500);
       return false;
     }
-    
-  
   </script>
 </body>
 
