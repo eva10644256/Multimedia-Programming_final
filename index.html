@@ -276,36 +276,79 @@
     </div>
   </footer>
   <script async>
-    var $ONLINE=$(".ad");
-    var $WIN=$(window);
-    var $DOCUMENT=$(document);
+    var $ONLINE = $(".ad");
+    var $WIN = $(window);
+    var $DOCUMENT = $(document);
     var POS;
-    var $HTML=$("html,body");
+    var $BTN = $("#BTN");
+    var $NAVNAV = $("#NAVNAV");
+    var $goTOP = $("#goTOP");
+    var $HTML = $("html,body");
+    var $FOOTER = $("#FOOTFOOT");
+    var $BottomNAV = $("#BottomNAV");
+    var $MOBI = $("#mobile-contact");
     var $IMG01 = $("#img01");
-    
-    POS=$WIN.height()-340;
-    $ONLINE.delay(2000).stop(true,false).animate({top:POS},800,"easeOutBack");
-    
-    $WIN.on("scroll resize",onSERVICE);
+
+    POS = $WIN.height() - 340;
+    $ONLINE.delay(2000).stop(true, false).animate({
+      top: POS
+    }, 800, "easeOutBack");
+
+    $WIN.on("scroll resize", onSERVICE);
     onSERVICE();
-    function onSERVICE(){
-      if($WIN.innerWidth()>768){
-      var POS = $WIN.scrollTop();
-      if(POS>520){
-        $IMG01.fadeIn(800);
-      }else{
-        $IMG01.fadeOut(800);
-      }
-      POS=$WIN.height()-450;
-      $ONLINE.stop(true,false).animate({top:POS+$WIN.scrollTop()},800,"easeOutBack");
+
+    function onSERVICE() {
+      if ($WIN.innerWidth() > 768) {
+        var POS = $WIN.scrollTop();
+        if (POS > 520) {
+          $IMG01.fadeIn(800);
+        } else {
+          $IMG01.fadeOut(800);
+        }
+        POS = $WIN.height() - 450;
+        $ONLINE.stop(true, false).animate({
+          top: POS + $WIN.scrollTop()
+        }, 800, "easeOutBack");
       }
     }
-    
+
+
+    $BTN.on("click", OPENOPEN);
+
+    function OPENOPEN() {
+      $NAVNAV.slideDown(200);
+      $NAVNAV.on("click", CLOSECLOSE);
+    }
+
+    function CLOSECLOSE() {
+      $NAVNAV.slideUp(200);
+      $NAVNAV.off("click");
+    }
+
+    $WIN.on("scroll resize", function CLEARSTYLE() {
+      if ($WIN.innerWidth() < 667) {
+        $BottomNAV.load("/course/mobile-contact.php");
+      }
+      if ($WIN.innerWidth() > 667) {
+        $NAVNAV.removeAttr("style");
+        //$MOBI.remove();
+      }
+    });
+
+
+    $(document).ready(function () {
+      if ($WIN.innerWidth() < 667) {
+        $BottomNAV.load("/course/mobile-contact.php");
+      }
+    })
+
     $goTOP.on("click", goTOP);
     $IMG01.on("click", goTOP);
-    
-    function goTOP(){
-      $HTML.animate({scrollTop:0},500);
+
+    function goTOP() {
+      $HTML.animate({
+        scrollTop: 0
+      }, 500);
       return false;
     }
   </script>
