@@ -608,10 +608,12 @@ nav a:hover {
 
 .comment form{
   margin-left: 25%;
+  
 }
 
 .comment textarea{
   height: 30px;
+
   font-size: 14pt;
   width: 80%;
   background-color: blanchedalmond;

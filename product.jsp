@@ -327,9 +327,10 @@ try {
       <input type="button" value="加入購物車" class="product_button">
     </div>
   </div>
-  <hr style="border: 1px solid gray">
+  
   <div class="comment">
-  <h1>留言板</h1>
+  <hr style="border: 1px solid gray">
+  <h1 style="margin-left:175px; margin-top:10px">留言板</h1>
   <form>
     <textarea rows="1" placeholder="輸入你想要寫的內容..."></textarea>
     <input type="submit" value="留言" class="comment-btn">
