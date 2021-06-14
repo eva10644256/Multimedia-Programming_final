@@ -30,7 +30,7 @@ try{
                         if(rs_admin.next()){
                             out.println("<SCRIPT LANGUAGE='JavaScript'>");
                             out.println("alert('管理員你好，歡迎進入後台！')");
-                            out.println("window.document.location.href='firm.html';");
+                            out.println("window.document.location.href='firm.jsp';");
                             out.println("</SCRIPT>");
                         }
 

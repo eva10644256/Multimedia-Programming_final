@@ -12,6 +12,7 @@ try {
         if(con.isClosed())
            out.println("連線建立失敗");
         else {
+
 //Step 3: 選擇資料庫   
             sql="use `bb`";
             con.createStatement().execute(sql);
@@ -42,32 +43,46 @@ try {
 
             sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 's'";  
             ResultSet rs_s =con.createStatement().executeQuery(sql);
-            String STOCK_s="";
+            String STOCK_s="",GDID_s ="";
+            
             while(rs_s.next()){
               STOCK_s = rs_s.getString("quan");
+              GDID_s=rs_s.getString("goodID");
             }
 
             sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'm'";  
             ResultSet rs_m =con.createStatement().executeQuery(sql);
-            String STOCK_m="";
+            String STOCK_m="",GDID_m ="";
+            
             while(rs_m.next()){
               STOCK_m = rs_m.getString("quan");
+              GDID_m=rs_m.getString("goodID");
             }
 
             sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'l'";  
             ResultSet rs_l =con.createStatement().executeQuery(sql);
-            String STOCK_l="";
+            String STOCK_l="",GDID_l ="";
+            
             while(rs_l.next()){
               STOCK_l = rs_l.getString("quan");
+              GDID_l=rs_l.getString("goodID");
             }
 
             sql = "SELECT * FROM bb.goods WHERE goodname LIKE '%"+new_search+"%' AND goodsize = 'xl'";  
             ResultSet rs_xl =con.createStatement().executeQuery(sql);
-            String STOCK_xl="";
+            String STOCK_xl="",GDID_xl ="";
+
             while(rs_xl.next()){
               STOCK_xl = rs_xl.getString("quan");
+              GDID_xl=rs_xl.getString("goodID");
             }
               
+            sql = "SELECT * FROM bb.members WHERE memID= '"+session.getAttribute("ID")+"' ";  
+                    ResultSet rs_memn =con.createStatement().executeQuery(sql);
+                    String membername = "";
+                    while(rs_memn.next()){
+                      membername = rs_memn.getString("name");
+                    }
 
 %>
 <!DOCTYPE html>
@@ -96,20 +111,21 @@ try {
 
         <div class="header_top">
 
-
       <%if(session.getAttribute("ID")!=null)
       {
         out.println("<a href='logout.jsp' class='login-text'>登出</a>");
         out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='shoppingcar.jsp'><i class='fa fa-shopping-cart'></i></a>");
       }
       else{
         out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
         out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='loginhead.jsp'><i class='fa fa-shopping-cart'></i></a>");
       }
       %>
-          <a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
+
         <div class="header_down">
           <div class="header_menu">
             <nav>
@@ -254,6 +270,7 @@ try {
     <div class="product_img">
       <img src="<%=IMGPATH%>">
     </div>
+    
     <div class="product_text">
       <h1><%=NAME%></h1>
       <div class="number1">
@@ -268,36 +285,45 @@ try {
         <span class="span1">商品介紹</span>
         <span class="span2"><%=INTRO%></span>
       </div>
-      <div class="number2">
-        <span class="span1">商品尺寸</span>
-        <span class="span2">
-            <input type="button" onclick = "changeStock(<%=STOCK_s%>)" value="S">
-            <input type="button" onclick = "changeStock(<%=STOCK_m%>)" value="M">
-            <input type="button" onclick = "changeStock(<%=STOCK_l%>)" value="L">
-            <input type="button" onclick = "changeStock(<%=STOCK_xl%>)" value="XL">
-          </span>
-      </div>
 
+      <form id="addcart" action="add_cart.jsp" method="post">
+          <input type="hidden" value="<%=NAME%>" name="gdNAME">
+          <input type="hidden" value="" id="getid" name="gdID">
+          <div class="number2">
+            <span class="span1">商品尺寸</span>
+            <span class="span2">
+                <input type="button" onclick = "changeStock(<%=STOCK_s%>); getsize('s','<%=GDID_s%>');" value="S">
+                <input type="button" onclick = "changeStock(<%=STOCK_m%>); getsize('m','<%=GDID_m%>');" value="M">
+                <input type="button" onclick = "changeStock(<%=STOCK_l%>); getsize('l','<%=GDID_l%>');" value="L">
+                <input type="button" onclick = "changeStock(<%=STOCK_xl%>); getsize('xl','<%=GDID_xl%>');" value="XL">
+              </span>
+          </div>
+          
+          <div class="number2">
+            <span class="span1">商品數量</span>
+            <span class="span2"><select style="height: 25px;" name="gdnum">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select></span>
+          </div>
+          <input id="gdsize" type="hidden" name="gdsize" value="">
+      </form>
       <script>
-
         function changeStock(s)
         {
           document.getElementById("Stocknumber").innerHTML=s; //改變剩餘數量的數字
         }
-      </script>
+        function getsize(i,y)
+        {
+          document.getElementById("gdsize").value=i;
+          document.getElementById("getid").value=y; 
+        }
+</script>
 
-      <div class="number2">
-        <span class="span1">商品數量</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇數量</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select></span>
-      </div>
       <div class="number3">
         <span class="span1">我要評分</span>
         <span class="span2">
@@ -324,18 +350,42 @@ try {
           </div>
         </span>
       </div>
-      <input type="button" value="加入購物車" class="product_button">
+      <input type="submit" value="加入購物車" class="product_button" form="addcart">
     </div>
   </div>
   
   <div class="comment">
   <hr style="border: 1px solid gray">
   <h1 style="margin-left:175px; margin-top:10px">留言板</h1>
-  <form>
-    <textarea rows="1" placeholder="輸入你想要寫的內容..."></textarea>
+  <form action="getmessage.jsp" method="post">
+    <input type="hidden" value="<%=membername%>" name="name">
+    <input type="hidden" value="<%=NAME%>" name="goodname">
+    <textarea rows="1" placeholder="輸入你想要寫的內容..." name="msg" ></textarea>
     <input type="submit" value="留言" class="comment-btn">
+
   </form>
-  <hr>
+  
+  
+  <%
+        sql = "SELECT * FROM bb.message WHERE gdname = '"+NAME+"'";  
+        ResultSet rs_msg =con.createStatement().executeQuery(sql);
+
+            while(rs_msg.next())
+              {
+                
+                out.println("<hr>");
+                out.println("<div class='board'>");
+                out.println(rs_msg.getString("memname"));
+                out.println(rs_msg.getString("wrdate"));
+                out.println("<br>");
+                out.println(rs_msg.getString("message"));
+                out.println("</div>");
+              }
+
+  
+  %>
+
+  <!--<hr>
   <div class="board">
   使用者帳號1 時間<br>
   抓留言資料庫
@@ -344,12 +394,11 @@ try {
     <div class="board">
   使用者帳號2 時間<br>
   抓留言資料庫
-  </div>
+  </div>-->
   </div>
 </body>
 
 </html>
-
 
 <%
 //Step 6: 關閉連線

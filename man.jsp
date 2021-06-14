@@ -42,15 +42,17 @@ try
 
 
           <%if(session.getAttribute("ID")!=null)
-          {
-            out.println("<a href='logout.jsp' class='login-text'>登出</a>");
-            out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
-          }
-          else{
-            out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
-            out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
-          }%>
-          <a href="#"><i class="fa fa-shopping-cart"></i></a>
+      {
+        out.println("<a href='logout.jsp' class='login-text'>登出</a>");
+        out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='shoppingcar.jsp'><i class='fa fa-shopping-cart'></i></a>");
+      }
+      else{
+        out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
+        out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='loginhead.jsp'><i class='fa fa-shopping-cart'></i></a>");
+      }
+      %>
 
         </div>
         <div class="header_down">

@@ -44,13 +44,15 @@ try
       {
         out.println("<a href='logout.jsp' class='login-text'>登出</a>");
         out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='shoppingcar.jsp'><i class='fa fa-shopping-cart'></i></a>");
       }
       else{
         out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
         out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
+        out.println("<a href='loginhead.jsp'><i class='fa fa-shopping-cart'></i></a>");
       }
       %>
-          <a href="#"><i class="fa fa-shopping-cart"></i></a>
+      
 
         </div>
         <div class="header_down">
@@ -176,12 +178,12 @@ try
 
           <div class="slide slide_1">
             <div class="slide-content">
-              <a href="woman.jsp #coat-w" title="點我前往頁面"><img src="img/phome-1.jpg"></a>
+              <a href="sport.jsp" title="點我前往頁面"><img src="img/phome-1.jpg"></a>
             </div>
           </div>
           <div class="slide slide_2">
             <div class="slide-content">
-              <a href="woman.jsp #top-w" title="點我前往頁面"><img src="img/phome-2.jpg"></a>
+              <a href="woman.jsp" title="點我前往頁面"><img src="img/phome-2.jpg"></a>
             </div>
           </div>
           <div class="slide slide_3">
@@ -191,7 +193,7 @@ try
           </div>
           <div class="slide slide_4">
             <div class="slide-content">
-              <a href="kids.jsp #down-k" title="點我前往頁面"><img src="img/phome-4.jpg"></a>
+              <a href="kids.jsp" title="點我前往頁面"><img src="img/phome-4.jpg"></a>
             </div>
           </div>
 
@@ -472,6 +474,20 @@ try
        %>個顧客 | © 活久見
     </div>
   </footer>
+  <%
+    con.close();
+}
+	}}
+    catch (SQLException sExec)
+    {
+        out.println("SQL錯誤"+sExec.toString());
+    }
+}
+catch (ClassNotFoundException err)
+{
+   out.println("class錯誤"+err.toString());
+}
+%>
   <script async>
     var $ONLINE=$(".ad");
     var $WIN=$(window);
@@ -507,18 +523,5 @@ try
   </script>
 </body>
 
-<%
-    con.close();
-}
-	}}
-    catch (SQLException sExec)
-    {
-        out.println("SQL錯誤"+sExec.toString());
-    }
-}
-catch (ClassNotFoundException err)
-{
-   out.println("class錯誤"+err.toString());
-}
-%>
+
 </html>
