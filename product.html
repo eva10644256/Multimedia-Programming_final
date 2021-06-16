@@ -11,43 +11,40 @@
   <link rel="stylesheet" href="css/index.css">
   <title>產品資訊</title>
 </head>
-
+<style>
+  body{
+    background-color: white;
+  }
+</style>
 <body>
   <header class="header">
     <div class="header_body">
-      <a href="index.jsp"><img src="img/logo.jpg"></a>
+      <a href="index.html"><img src="img/logo.jpg"></a>
       <div class="top_menu">
 
         <div class="header_top">
 
+        <a href='login.html' class='login-text'>註冊/登入</a>
+        <a href='membership.html'><i class='fa fa-user'></i></a>
+        <a href='shopping_car.html'><i class='fa fa-shopping-cart'></i></a>
 
-      <%if(session.getAttribute("ID")!=null)
-      {
-        out.println("<a href='logout.jsp' class='login-text'>登出</a>");
-        out.println("<a href='membership.jsp'><i class='fa fa-user'></i></a>");
-      }
-      else{
-        out.println("<a href='login.jsp' class='login-text'>註冊/登入</a>");
-        out.println("<a href='loginhead.jsp'><i class='fa fa-user'></i></a>");
-      }
-      %>
-          <a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
+
         <div class="header_down">
           <div class="header_menu">
             <nav>
               <ul class="flex-nav">
-                <li><a href="woman.jsp">WOMAN</a></li>
-                <li><a href="man.jsp">MAN</a></li>
-                <li><a href="kids.jsp">KIDS</a></li>
-                <li><a href="sport.jsp">SPORT</a></li>
+                <li><a href="woman.html">WOMAN</a></li>
+                <li><a href="man.html">MAN</a></li>
+                <li><a href="kids.html">KIDS</a></li>
+                <li><a href="sport.html">SPORT</a></li>
               </ul>
             </nav>
           </div>
           <div class="search">
             <div class="select_box">
-              <form action="product.jsp" method="post">
+              <form action="product.html" method="post">
                 <select size="1" class="select_style" name="search">
                   <option value="請選擇商品" style="font-weight: bold;"><strong>請選擇商品</strong></option>
                   <optgroup label="女裝-上衣">
@@ -138,9 +135,9 @@
         <h2><a href="woman.html" class="list-a">女裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="woman.html #top-w" class="list-a">上衣</a></li>
-          <li><a href="woman.html #down-w" class="list-a">下著</a></li>
-          <li><a href="woman.html #coat-w" class="list-a">外套</a></li>
+          <li><a href="woman.html#top-w" class="list-a">上衣</a></li>
+          <li><a href="woman.html#down-w" class="list-a">下著</a></li>
+          <li><a href="woman.html#coat-w" class="list-a">外套</a></li>
 
         </ul>
       </div>
@@ -148,70 +145,90 @@
         <h2><a href="man.html" class="list-a">男裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="man.html #top-m" class="list-a">上衣</a></li>
-          <li><a href="man.html #down-m" class="list-a">下著</a></li>
-          <li><a href="man.html #coat-m" class="list-a">外套</a></li>
+          <li><a href="man.html#top-m" class="list-a">上衣</a></li>
+          <li><a href="man.html#down-m" class="list-a">下著</a></li>
+          <li><a href="man.html#coat-m" class="list-a">外套</a></li>
         </ul>
       </div>
       <div class="list">
         <h2><a href="kids.html" class="list-a">童裝</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="kids.html #top-k" class="list-a">上衣</a></li>
-          <li><a href="kids.html #down-k" class="list-a">下著</a></li>
-          <li><a href="kids.html #coat-k" class="list-a">外套</a></li>
+          <li><a href="kids.html#top-k" class="list-a">上衣</a></li>
+          <li><a href="kids.html#down-k" class="list-a">下著</a></li>
+          <li><a href="kids.html#coat-k" class="list-a">外套</a></li>
         </ul>
       </div>
       <div class="list">
         <h2><a href="sport.html" class="list-a">運動</a></h2>
         <hr color="black" align="left" width="80%" size="1">
         <ul>
-          <li><a href="sport.html #top-s" class="list-a">上衣</a></li>
-          <li><a href="sport.html #down-s" class="list-a">下著</a></li>
-          <li><a href="sport.html #coat-s" class="list-a">外套</a></li>
+          <li><a href="sport.html#top-s" class="list-a">上衣</a></li>
+          <li><a href="sport.html#down-s" class="list-a">下著</a></li>
+          <li><a href="sport.html#coat-s" class="list-a">外套</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="product_information">
+
     <div class="product_img">
-      <img src="img/woman/w-1.jpg">
+      <img src="img/p1.jpg">
     </div>
+    
     <div class="product_text">
-      <h1>商品名稱</h1>
+      <h1>NAME</h1>
       <div class="number1">
         <span class="span1">商品庫存</span>
-        <span class="span2">001</span>
+        <span class="span2"  id="Stocknumber">STOCK</span>
       </div>
       <div class="number2">
         <span class="span1">商品價格</span>
-        <span class="span2">NT$300</span>
+        <span class="span2">NT$100</span>
       </div>
       <div class="number2">
         <span class="span1">商品介紹</span>
-        <span class="span2">100%純棉</span>
+        <span class="span2">INTRO</span>
       </div>
-      <div class="number2">
-        <span class="span1">商品尺寸</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select></span>
-      </div>
-      <div class="number2">
-        <span class="span1">商品數量</span>
-        <span class="span2"><select style="height: 25px;">
-            <option>請選擇數量</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select></span>
-      </div>
+
+      <form id="addcart" action="add_cart.html" method="post">
+          <input type="hidden" value="<%=NAME%>" name="gdNAME">
+          <input type="hidden" value="" id="getid" name="gdID">
+          <div class="number2">
+            <span class="span1">商品尺寸</span>
+            <span class="span2">
+                <input type="button" onclick = "changeStock(<%=STOCK_s%>); getsize('s','<%=GDID_s%>');" value="S">
+                <input type="button" onclick = "changeStock(<%=STOCK_m%>); getsize('m','<%=GDID_m%>');" value="M">
+                <input type="button" onclick = "changeStock(<%=STOCK_l%>); getsize('l','<%=GDID_l%>');" value="L">
+                <input type="button" onclick = "changeStock(<%=STOCK_xl%>); getsize('xl','<%=GDID_xl%>');" value="XL">
+              </span>
+          </div>
+          
+          <div class="number2">
+            <span class="span1">商品數量</span>
+            <span class="span2"><select style="height: 25px;" name="gdnum">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select></span>
+          </div>
+          <input id="gdsize" type="hidden" name="gdsize" value="">
+      </form>
+      <script>
+        function changeStock(s)
+        {
+          document.getElementById("Stocknumber").innerHTML=s; //改變剩餘數量的數字
+        }
+        function getsize(i,y)
+        {
+          document.getElementById("gdsize").value=i;
+          document.getElementById("getid").value=y; 
+        }
+</script>
+
       <div class="number3">
         <span class="span1">我要評分</span>
         <span class="span2">
@@ -238,11 +255,33 @@
           </div>
         </span>
       </div>
-      <input type="button" value="加入購物車" class="product_button">
+      <input type="submit" value="加入購物車" class="product_button" form="addcart">
     </div>
   </div>
+  
+  <div class="comment">
+  <hr style="border: 1px solid gray">
+  <h1 style="margin-left:175px; margin-top:10px">留言板</h1>
+  <form action="getmessage.jsp" method="post">
+    <input type="hidden" value="<%=membername%>" name="name">
+    <input type="hidden" value="<%=NAME%>" name="goodname">
+    <textarea rows="1" placeholder="輸入你想要寫的內容..." name="msg" ></textarea>
+    <input type="submit" value="留言" class="comment-btn">
 
-
+  </form>
+  
+  
+  <hr>
+  <div class="board">
+  使用者帳號1 時間<br>
+  抓留言資料庫
+  </div>
+  <hr>
+    <div class="board">
+  使用者帳號2 時間<br>
+  抓留言資料庫
+  </div>
+  </div>
 </body>
 
 </html>
