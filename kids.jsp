@@ -53,7 +53,6 @@ try
         out.println("<a href='loginhead.jsp'><i class='fa fa-shopping-cart'></i></a>");
       }
       %>
-          //<a href="#"><i class="fa fa-shopping-cart"></i></a>
 
         </div>
         <div class="header_down">
