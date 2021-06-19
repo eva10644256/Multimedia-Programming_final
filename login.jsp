@@ -12,7 +12,7 @@
     <!-- partial -->
 </head>
 
-<body>
+<body style="background-color:#8EE5EE ;">
   <div class="container right-panel-active">
     <!-- 註冊 -->
     <div class="container_form container--signup">

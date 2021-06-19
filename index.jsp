@@ -227,10 +227,13 @@ try
       <%
             String sqlsn = "SELECT *, SUM(salenum) FROM goods GROUP BY goodname ORDER BY SUM(salenum) DESC LIMIT 5";
             ResultSet rssn = con.createStatement().executeQuery(sqlsn);
+            int num = 0;
             while(rssn.next())
             {
+                num++;
                 out.println("<div class='hot_box_product'>");
                 out.println("<form action='product.jsp' method='post'>");
+                out.print("NO."+num);
                 out.println("<input type='hidden' name='search' value='"+rssn.getString("goodname")+"'>");
                 out.println("<a href='product.jsp'><input type='image' src='"+rssn.getString("path")+"' class='img-fluid'>");
                 out.println("<p>"+rssn.getString("goodname")+"</p>");

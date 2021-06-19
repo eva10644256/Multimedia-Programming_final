@@ -335,26 +335,25 @@ USE `bb`;
 DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order` (
+  `orderflow` int(10) NOT NULL AUTO_INCREMENT,
   `orderID` varchar(10) NOT NULL,
-  `goodID` varchar(10) NOT NULL,
+  `memID` varchar(45) DEFAULT NULL,
   `goodname` varchar(45) NOT NULL,
-  `price` int NOT NULL,
+  `price` int(11) NOT NULL,
   `goodsize` varchar(10) NOT NULL,
-  `quan` int NOT NULL,
-  `buy` varchar(20) NOT NULL,
+  `quan` int(11) NOT NULL,
   `memmail` varchar(80) NOT NULL,
   `sendname` varchar(45) NOT NULL,
   `address` varchar(80) NOT NULL,
   `phone` varchar(80) NOT NULL,
-  `totalprice` varchar(80) DEFAULT NULL,
-  `orderdate` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`orderID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `note` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`orderflow`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `order`
 --
-
+INSERT INTO `order` VALUES('0','0','0','0','0','0','0','0','0','0','0','0');
 
 --
 -- Table structure for table `message`
@@ -363,12 +362,14 @@ USE `bb`;
 DROP TABLE IF EXISTS `message`;
 
 CREATE TABLE `message` (
-  `mesID`  int(30) NOT NULL AUTO_INCREMENT,
-  `message` varchar(100) ,
-  `star` varchar(40),
-  `wrdate` varchar(45) NOT NULL,
+  `mesID` int(30) NOT NULL AUTO_INCREMENT,
+  `message` varchar(100) DEFAULT NULL,
+  `memid` varchar(40) DEFAULT NULL,
+  `wrdate` varchar(45) DEFAULT NULL,
+  `memname` varchar(45) DEFAULT NULL,
+  `gdname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`mesID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `message`
@@ -381,13 +382,14 @@ USE `bb`;
 DROP TABLE IF EXISTS `counter`;
 
 CREATE TABLE `counter` (
-  `counter`  varchar(10) NOT NULL,
+  `counter` varchar(10) NOT NULL,
   PRIMARY KEY (`counter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `message`
 --
+INSERT INTO `counter` VALUES('0');
 
 --
 -- Table structure for table `cart`
@@ -396,15 +398,15 @@ USE `bb`;
 DROP TABLE IF EXISTS `cart`;
 
 CREATE TABLE `cart` (
-  `orderID` varchar(10) NOT NULL,
+  `orderID` int(10) NOT NULL AUTO_INCREMENT,
   `goodID` varchar(10) NOT NULL,
   `goodname` varchar(45) NOT NULL,
   `goodsize` varchar(10) NOT NULL,
-  `price` int NOT NULL,
+  `price` int(11) NOT NULL,
   `num` varchar(20) NOT NULL,
-  `memID` int(10) NOT NULL ,
+  `memID` int(10) NOT NULL,
   PRIMARY KEY (`orderID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart`

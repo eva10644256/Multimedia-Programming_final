@@ -118,23 +118,23 @@ try
         <h2>訂購資料</h2>
         <div class="number1">
           <span class="span1">姓名</span>
-          <span class="span2"><input type="text" class="input-field" placeholder="" name="name"></span>
+          <span class="span2"><input type="text" class="input-field" placeholder="" name="name" required></span>
         </div>
         <div class="number1">
           <span class="span1">地址</span>
-          <span class="span2"><input type="text" class="input-field" placeholder="" name="addr"></span>
+          <span class="span2"><input type="text" class="input-field" placeholder="" name="addr" required></span>
         </div>
         <div class="number1">
           <span class="span1">電話</span>
-          <span class="span2"><input type="text" class="input-field" placeholder="" name="tel"></span>
+          <span class="span2"><input type="text" class="input-field" placeholder="" name="tel" required></span>
         </div>
         <div class="number1">
           <span class="span1">Email</span>
-          <span class="span2"><input type="text" class="input-field" placeholder="" name="email"></span>
+          <span class="span2"><input type="text" class="input-field" placeholder="" name="email" required></span>
         </div>
         <div class="number1">
           <span class="span1">有話想說</span>
-          <span class="span2"> <textarea class="input-field" placeholder="" name="elsetosay"></textarea></span>
+          <span class="span2"> <textarea class="input-field" placeholder="" name="elsetosay" ></textarea></span>
         </div>
         <input type="submit" value="確認訂購" class="product_button">
       </form>
